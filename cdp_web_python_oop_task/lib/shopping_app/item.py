@@ -1,5 +1,6 @@
 class Item:
     instances = []
+    from ownable import set_owner
 
 
     def __init__(self, name, price, owner=None):
