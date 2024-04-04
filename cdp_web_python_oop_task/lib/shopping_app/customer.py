@@ -1,6 +1,6 @@
 from user import User
 from cart import Cart
-from ownable import set_owner
+
 
 class Customer(User):
 
