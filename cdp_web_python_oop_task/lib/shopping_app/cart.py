@@ -19,14 +19,17 @@ class Cart:
         return sum(price_list)
 
     def check_out(self):
-        if self.owner.wallet.balance < self.total_amount():
-            print ("Insufficient balance")
+        if self.owner.wallet.balance >= self.total_amount():
+            self.owner.wallet.withdraw(self.total_amount())
         else:
             for item in self.items:
-                self.owner.wallet.balance += item.price
-                self.owner.wallet.balance -= item.price
-                item.owner = self.owner = []
+                owner = item.owner
+                owner.wallet.deposit(item.price)
+
+        for item in self.items:
+            item.set_owner(self.owner)
             
+        self.items.clear
             # Eliminar pase al codificar el método check_out.
         # Requisitos
         #: el monto de la compra de todos los artículos en el carrito (Cart#items) se transfiere de la billetera del propietario del carrito a la billetera del propietario del artículo.
