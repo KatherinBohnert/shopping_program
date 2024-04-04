@@ -1,6 +1,7 @@
 from customer import Customer
 from item import Item
 from seller import Seller
+from wallet import _init_
 
 seller = Seller("DICストア")
 for i in range(10):
